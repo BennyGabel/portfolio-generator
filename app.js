@@ -53,7 +53,8 @@ if (err) throw err;
 });
 */
 
-// From web
+/*
+// From web    by the end of 9.2...
 const fs = require('fs');
 const generatePage = require('./src/page-template');
 
@@ -72,5 +73,47 @@ fs.writeFile('./index.html', pageHTML, err => {
 
   console.log('Portfolio complete! Check out index.html to see the output!');
 });
+*/
 
+const inquirer = require('inquirer') ;
+// console.log(inquirer);
 
+/*
+First 
+-----
+inquirer
+  .prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'What is your name?'
+    }
+  ])
+  .then(answers => console.log(answers));
+*/
+
+/*
+Second - Inside a function
+*/
+const promptUser = () => {
+  return inquirer.prompt([
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is your name?'
+      },
+      {
+        type: 'input',
+        name: 'gtihub',
+        message: 'What is your GitHub UserName?'
+      },
+      {
+        type: 'input',
+        name: 'about',
+        message: 'What is your name?'
+      }
+
+    ])
+  }
+
+promptUser().then(answers => console.log(answers));
