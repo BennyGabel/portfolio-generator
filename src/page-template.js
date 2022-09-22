@@ -47,8 +47,9 @@ const generatePage = (name, github) => {
   
   
   // feature/update-template
+
   module.exports = templateData => {
-    console.log(templateData);
+    console.log(templateData, "templateData from page-templeate");
 
     return `
     <!DOCTYPE html>

@@ -75,10 +75,12 @@ fs.writeFile('./index.html', pageHTML, err => {
 });
 */
 
+
 const fs = require('fs');
 const generatePage = require('./src/page-template.js')
 const inquirer = require('inquirer');
 // console.log(inquirer);
+
 
 /*
 First 
@@ -211,9 +213,11 @@ const promptProject = portfolioData => {
   ])
   .then(projectData => {
     portfolioData.projects.push(projectData);
+    // console.log(projectData, "==== project data =====");
+    // console.log(portfolioData, "==== project data 2 =====");
     if (projectData.confirmAddProject) {
       return promptProject(portfolioData);
-    } else {
+    } else { 
       return portfolioData;
     }
   });
@@ -230,5 +234,6 @@ const promptProject = portfolioData => {
 promptUser()
   .then(promptProject)
   .then(portfolioData => {
+    const pageHTML = generatePage(portfolioData);
     // console.log(portfolioData);
   });
