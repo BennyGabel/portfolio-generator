@@ -110,7 +110,7 @@ const promptUser = () => {
     {
       type: 'input',
       name: 'about',
-      message: 'What is your name?'
+      message: 'What is about?'
     }
 
   ])
@@ -132,7 +132,15 @@ const promptProject = portfolioData => {
     {
       type: 'input',
       name: 'name',
-      message: 'What is the name of your project?'
+      message: 'What is the name of your project?',
+      validate: nameInput => {
+        if (nameInput) {
+          return true;
+        } else {
+          console.log('Please enter your name!');
+          return false;
+        }      
+      }
     },
     {
       type: 'input',
@@ -162,8 +170,8 @@ const promptProject = portfolioData => {
       message: 'Would you like to enter another project?',
       default: false
     }
-  ]);
-  then(projectData => {
+  ])
+  .then(projectData => {
     portfolioData.projects.push(projectData);
     if (projectData.confirmAddProject) {
       return promptProject(portfolioData);
